@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-const { game } = require("../game");
+const { game, newGame } = require("../game"); //this is where you export the function to be tested
 
 
 beforeAll(() => {
@@ -21,3 +21,15 @@ describe("game object contains correct keys", () => {
         expect("currentGame" in game).toBe(true);
     });
 });
+
+//describe block followed by test code
+
+describe("newGame works correctly", () => {
+    beforeAll(() => {
+        game.score = 42;
+        newGame();
+    });
+test("should set game score to zero", () => {
+    expect(game.score).toEqual(0);
+    });
+});    
